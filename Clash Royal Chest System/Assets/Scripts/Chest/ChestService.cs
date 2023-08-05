@@ -1,4 +1,5 @@
 
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,11 +12,13 @@ public class ChestService : MonoSingletonGeneric<ChestService>
     [SerializeField]
     private ChestView chestCard;
 
+    public Queue<ChestView> UnlockQueue;
 
     private void Start()
     {
         SpawnChestCards();
     }
+
 
     private void SpawnChestCards()
     {
