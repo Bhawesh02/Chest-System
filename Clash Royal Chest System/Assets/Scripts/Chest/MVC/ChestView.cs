@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Button))]
-public class ChestVew : MonoBehaviour
+public class ChestView : MonoBehaviour
 {
     
 }

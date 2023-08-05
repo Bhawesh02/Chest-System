@@ -9,7 +9,7 @@ public class ChestService : MonoSingletonGeneric<ChestService>
     [SerializeField]
     private ChestSystemScriptableObject chestSystem;
     [SerializeField]
-    private GameObject chestCard;
+    private ChestView chestCard;
 
 
     private void Start()
