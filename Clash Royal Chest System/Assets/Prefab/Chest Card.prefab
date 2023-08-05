@@ -271,6 +271,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2418827413abd344ada75c8f797a346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ChestImage: {fileID: 8847287763531144282}
+  StateInfo: {fileID: 1776821009194517112}
 --- !u!1 &8923019366030355144
 GameObject:
   m_ObjectHideFlags: 0
