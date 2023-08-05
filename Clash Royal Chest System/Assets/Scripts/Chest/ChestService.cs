@@ -26,4 +26,9 @@ public class ChestService : MonoSingletonGeneric<ChestService>
             Instantiate(chestCard.gameObject, chestGrid.gameObject.transform);
         }
     }
+
+    public void AddToUlockQueue(ChestView chestView)
+    {
+        Debug.Log("Add to Queue " + chestView);
+    }
 }

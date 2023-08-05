@@ -6,24 +6,30 @@ using TMPro;
 [RequireComponent(typeof(Button))]
 public class ChestView : MonoBehaviour
 {
-    private ChestController chestController;
-    private ChestModel chestModel;
+    public ChestController ChestController{get; private set;}
+    public ChestModel ChestModel { get; private set;}
     private static ChestService chestService ;
-
+    private Button button;
     public Image ChestImage;
     public TextMeshProUGUI StateInfo;
 
+    private void Awake()
+    {
+        button = GetComponent<Button>();
+    }
     private void Start()
     {
         chestService = ChestService.Instance;
         SetModelAndController();
-        chestController.SetChestImage(chestModel.ChestClose);
+        ChestController.SetChestState(ChestStates.Locked);
+        button.onClick.AddListener(ChestController.CardClicked);
     }
+
 
     private void SetModelAndController()
     {
         int sObjInt = Random.Range(0,chestService.ChestSystem.chestScriptableObjects.Length);
-        chestModel = new(chestService.ChestSystem.chestScriptableObjects[sObjInt]);
-        chestController = new(chestModel,this);
+        ChestModel = new(chestService.ChestSystem.chestScriptableObjects[sObjInt],this);
+        ChestController = new(ChestModel,this);
     }
 }
