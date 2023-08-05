@@ -7,7 +7,7 @@ public class ChestScriptableObject : ScriptableObject
 {
     public Rewards Reward;
     public ChestType Type;
-    public float TimeToOpenInMin;
+    public int TimeToOpenInMin;
     public Sprite ChestClose;
     public Sprite ChestOpen;
 
