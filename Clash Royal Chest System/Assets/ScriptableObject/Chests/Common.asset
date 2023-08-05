@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Common
   m_EditorClassIdentifier: 
   Reward:
-    MaxGem: 0
-    MinGem: 0
-    MaxCoin: 0
-    MinCoin: 0
-  Type: 0
-  TimeToOpen: 0
-  ChestClose: {fileID: 0}
-  ChestOpen: {fileID: 0}
+    MaxGem: 20
+    MinGem: 10
+    MaxCoin: 200
+    MinCoin: 100
+  Type: 1
+  TimeToOpenInMin: 15
+  ChestClose: {fileID: 21300000, guid: a0373946b1e6b6b4e896c3553bde0803, type: 3}
+  ChestOpen: {fileID: 21300000, guid: 1918c1b1b1625a2428fcf6c1cd842c38, type: 3}

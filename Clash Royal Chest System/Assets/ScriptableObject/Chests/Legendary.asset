@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Legendary
   m_EditorClassIdentifier: 
   Reward:
-    MaxGem: 0
-    MinGem: 0
-    MaxCoin: 0
-    MinCoin: 0
-  Type: 0
-  TimeToOpen: 0
-  ChestClose: {fileID: 0}
+    MaxGem: 100
+    MinGem: 80
+    MaxCoin: 1200
+    MinCoin: 1000
+  Type: 4
+  TimeToOpenInMin: 180
+  ChestClose: {fileID: 21300000, guid: 60def6febfc4e264d86b916fd1ed1733, type: 3}
   ChestOpen: {fileID: 0}
