@@ -5,9 +5,9 @@ public class ChestUnlockedState : ChestState
     {
         ChestView = chestView;
     }
-    public override void OnStateExit()
+    public override void OnStateEnter()
     {
-        base.OnStateExit();
+        base.OnStateEnter();
         ChestView.ChestController.SetChestImage(ChestView.ChestModel.ChestOpen);
     }
     public override void Clicked()
