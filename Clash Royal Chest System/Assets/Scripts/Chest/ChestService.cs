@@ -11,7 +11,7 @@ public class ChestService : MonoSingletonGeneric<ChestService>
     [SerializeField]
     private ChestView chestCard;
 
-    public Queue<ChestView> UnlockQueue;
+    public Queue<ChestView> UnlockQueue = new();
 
     private void Start()
     {
@@ -29,6 +29,15 @@ public class ChestService : MonoSingletonGeneric<ChestService>
 
     public void AddToUlockQueue(ChestView chestView)
     {
-        Debug.Log("Add to Queue " + chestView);
+        if(UnlockQueue.Count == ChestSystem.NumOfChestInUnlockQueue)
+        {
+            Debug.Log("Wait for chests to open");
+            return;
+        }
+        UnlockQueue.Enqueue(chestView);
+        if(UnlockQueue.Count == 1)
+        {
+            chestView.ChestController.SetChestState(ChestStates.Unlocking);
+        }
     }
 }

@@ -11,6 +11,7 @@ public class ChestUnlockingState : ChestState
     public override void OnStateEnter()
     {
         StartTime = Time.time;
+        ChestView.StateInfo.text = "Unlocking";
     }
     public override void Clicked()
     {
