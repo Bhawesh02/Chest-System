@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5d5a59f58a8c9548bcac49d581ae155, type: 3}
   m_Name: Chest System
   m_EditorClassIdentifier: 
-  chestScriptableObjects: []
-  NumOfChestInScene: 0
-  NumOfChestInUnlockQueue: 0
+  chestScriptableObjects:
+  - {fileID: 11400000, guid: 9e96773e73cc5114cb3162d861ff6948, type: 2}
+  - {fileID: 11400000, guid: 9a3859fcc15b9294eab4fa439286a7c0, type: 2}
+  - {fileID: 11400000, guid: 731ddb34853963e48956141fdefe93d8, type: 2}
+  - {fileID: 11400000, guid: 8f789d3ed5e66f040b4d45c1e9eff70d, type: 2}
+  NumOfChestInScene: 4
+  NumOfChestInUnlockQueue: 2

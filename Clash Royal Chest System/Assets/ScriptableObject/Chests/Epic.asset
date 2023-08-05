@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Epic
   m_EditorClassIdentifier: 
   Reward:
-    MaxGem: 0
-    MinGem: 0
-    MaxCoin: 0
-    MinCoin: 0
-  Type: 0
-  TimeToOpen: 0
-  ChestClose: {fileID: 0}
-  ChestOpen: {fileID: 0}
+    MaxGem: 60
+    MinGem: 45
+    MaxCoin: 800
+    MinCoin: 600
+  Type: 3
+  TimeToOpenInMin: 60
+  ChestClose: {fileID: 21300000, guid: 82c2053b0bb2d5447bb0039d8b0576cd, type: 3}
+  ChestOpen: {fileID: 21300000, guid: fb3cad3a4b472d94b83eb0d001772441, type: 3}
