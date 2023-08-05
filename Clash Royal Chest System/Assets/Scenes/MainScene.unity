@@ -1028,7 +1028,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chestGrid: {fileID: 1139025153}
   chestSystem: {fileID: 11400000, guid: fbcf67e1086233c4b97fcf8be92071c2, type: 2}
-  chestCard: {fileID: 8094327547315914697, guid: 6b97c8ee553664946ae2e06b94ce9482, type: 3}
+  chestCard: {fileID: 8554351779444104734, guid: 6b97c8ee553664946ae2e06b94ce9482, type: 3}
 --- !u!4 &1539124083
 Transform:
   m_ObjectHideFlags: 0

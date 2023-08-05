@@ -7,8 +7,7 @@ public class ChestService : MonoSingletonGeneric<ChestService>
 {
     [SerializeField]
     private LayoutGroup chestGrid;
-    [SerializeField]
-    private ChestSystemScriptableObject chestSystem;
+    public ChestSystemScriptableObject ChestSystem;
     [SerializeField]
     private ChestView chestCard;
 
@@ -22,9 +21,9 @@ public class ChestService : MonoSingletonGeneric<ChestService>
 
     private void SpawnChestCards()
     {
-        for (int i = 0; i < chestSystem.NumOfChestInScene; i++)
+        for (int i = 0; i < ChestSystem.NumOfChestInScene; i++)
         {
-            Instantiate(chestCard, chestGrid.gameObject.transform);
+            Instantiate(chestCard.gameObject, chestGrid.gameObject.transform);
         }
     }
 }

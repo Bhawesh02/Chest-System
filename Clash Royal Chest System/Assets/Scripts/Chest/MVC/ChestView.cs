@@ -1,5 +1,4 @@
 
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,15 +7,18 @@ public class ChestView : MonoBehaviour
 {
     private ChestController chestController;
     private ChestModel chestModel;
-    private ChestService chestService ;
+    private static ChestService chestService ;
 
-    private void Awake()
+    private void Start()
     {
+        chestService = ChestService.Instance;
         SetModelAndController();
     }
 
     private void SetModelAndController()
     {
-        //private int sObjInt = Random.Range(0,);
+        int sObjInt = Random.Range(0,chestService.ChestSystem.chestScriptableObjects.Length);
+        chestModel = new(chestService.ChestSystem.chestScriptableObjects[sObjInt]);
+        chestController = new(chestModel,this);
     }
 }
