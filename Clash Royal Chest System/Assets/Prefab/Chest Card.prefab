@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 7757215702986875980}
   - component: {fileID: 4102583466581489005}
   - component: {fileID: 1326765190299935830}
+  - component: {fileID: 8554351779444104734}
   m_Layer: 5
   m_Name: Chest Card
   m_TagString: Untagged
@@ -258,6 +259,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8554351779444104734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8094327547315914697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2418827413abd344ada75c8f797a346, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8923019366030355144
 GameObject:
   m_ObjectHideFlags: 0
