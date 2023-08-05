@@ -9,6 +9,7 @@ public class ChestUnlockedState : ChestState
     {
         base.OnStateEnter();
         ChestView.ChestController.SetChestImage(ChestView.ChestModel.ChestOpen);
+        ChestView.StateInfo.text = "Unlocked";
         EventService.Instance.InvokeChestUnlocked();
     }
     public override void Clicked()

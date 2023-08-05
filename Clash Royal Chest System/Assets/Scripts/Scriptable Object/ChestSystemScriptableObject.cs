@@ -7,4 +7,5 @@ public class ChestSystemScriptableObject : ScriptableObject
     public ChestScriptableObject[] chestScriptableObjects;
     public int NumOfChestInScene;
     public int NumOfChestInUnlockQueue;
+    public int GemsRequiredPer10Min;
 }

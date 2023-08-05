@@ -10,9 +10,11 @@ public class ChestService : MonoSingletonGeneric<ChestService>
     private LayoutGroup chestGrid;
     public ChestSystemScriptableObject ChestSystem;
     [SerializeField]
-    private ChestView chestCard;
+    private ChestView chestCardPrefab;
 
     public Queue<ChestView> UnlockQueue = new();
+
+    public EarlyUnlockPopup EarlyUnlockPopup;
 
     private void Start()
     {
@@ -29,7 +31,7 @@ public class ChestService : MonoSingletonGeneric<ChestService>
     {
         for (int i = 0; i < ChestSystem.NumOfChestInScene; i++)
         {
-            Instantiate(chestCard.gameObject, chestGrid.gameObject.transform);
+            Instantiate(chestCardPrefab.gameObject, chestGrid.gameObject.transform);
         }
     }
 
