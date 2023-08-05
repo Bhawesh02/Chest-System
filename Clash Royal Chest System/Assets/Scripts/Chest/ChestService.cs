@@ -1,4 +1,5 @@
 
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,8 +17,13 @@ public class ChestService : MonoSingletonGeneric<ChestService>
     private void Start()
     {
         SpawnChestCards();
+        EventService.Instance.ChestUnlocked += DequeChest;
     }
 
+    private void DequeChest()
+    {
+        UnlockQueue.Dequeue();
+    }
 
     private void SpawnChestCards()
     {

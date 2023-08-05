@@ -5,6 +5,6 @@ public class SingletonGeneric<T>  where T : class,new()
     public static T Instance { get {
             instance ??= new();
             return instance; } }
-    SingletonGeneric() { }
+    public SingletonGeneric() { }
 
 }

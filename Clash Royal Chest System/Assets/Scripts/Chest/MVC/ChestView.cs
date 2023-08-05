@@ -24,7 +24,10 @@ public class ChestView : MonoBehaviour
         ChestController.SetChestState(ChestStates.Locked);
         button.onClick.AddListener(ChestController.CardClicked);
     }
-
+    private void Update()
+    {
+        ChestModel.CurrentState?.Tick();
+    }
 
     private void SetModelAndController()
     {
