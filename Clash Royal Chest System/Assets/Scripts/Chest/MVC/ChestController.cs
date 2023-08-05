@@ -10,4 +10,5 @@ public class ChestController
         this.chestModel = chestModel;
         this.chestView = chestView;
     }
+
 }
