@@ -1,5 +1,7 @@
 
 
+using UnityEngine;
+
 public class ChestController
 {
     private ChestModel chestModel;
@@ -10,5 +12,8 @@ public class ChestController
         this.chestModel = chestModel;
         this.chestView = chestView;
     }
-
+    public void SetChestImage(Sprite chestSprite)
+    {
+        chestView.ChestImage.sprite = chestSprite;
+    }
 }

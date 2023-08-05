@@ -1,6 +1,7 @@
 
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 [RequireComponent(typeof(Button))]
 public class ChestView : MonoBehaviour
@@ -9,10 +10,14 @@ public class ChestView : MonoBehaviour
     private ChestModel chestModel;
     private static ChestService chestService ;
 
+    public Image ChestImage;
+    public TextMeshProUGUI StateInfo;
+
     private void Start()
     {
         chestService = ChestService.Instance;
         SetModelAndController();
+        chestController.SetChestImage(chestModel.ChestClose);
     }
 
     private void SetModelAndController()
