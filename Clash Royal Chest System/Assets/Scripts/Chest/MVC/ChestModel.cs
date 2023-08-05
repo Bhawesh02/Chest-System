@@ -8,7 +8,7 @@ public class ChestModel
     public Sprite ChestClose { get; private set; }
     public Sprite ChestOpen { get; private set; }
 
-    public ChestState State;
+    public ChestStates State;
 
     public ChestModel(ChestScriptableObject chestScriptableObject)
     {
@@ -16,6 +16,6 @@ public class ChestModel
         TimeToOpenInMin = chestScriptableObject.TimeToOpenInMin;
         ChestClose = chestScriptableObject.ChestClose;
         ChestOpen = chestScriptableObject.ChestOpen;
-        State = ChestState.Locked;
+        State = ChestStates.Locked;
     }
 }
