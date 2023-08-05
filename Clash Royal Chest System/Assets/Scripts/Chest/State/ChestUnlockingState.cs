@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -41,28 +42,45 @@ public class ChestUnlockingState : ChestState
 
     }
 
-    
+
 
     private async void AfterEveryMin()
     {
-        await Task.Delay(60000, cancellationTokenSource.Token);
-        TimeToOpen--;
-        ShowTime();
-        if (TimeToOpen == 0)
+        try
         {
-            ChestView.ChestController.SetChestState(ChestStates.Unlocked);
-            return;
+            await Task.Delay(5000, cancellationTokenSource.Token);
+            TimeToOpen--;
+            ShowTime();
+            if (TimeToOpen == 0)
+            {
+                ChestView.ChestController.SetChestState(ChestStates.Unlocked);
+                return;
+            }
+            AfterEveryMin();
         }
-        AfterEveryMin();
+        catch (TaskCanceledException)
+        {
+
+        }
     }
 
     public override void Clicked()
     {
-        ChestService.Instance.EarlyUnlockPopup.ChestView = ChestView;
-        ChestService.Instance.EarlyUnlockPopup.gameObject.SetActive(true);
+        EarlyUnlockPopup earlyUnlockPopup = ChestService.Instance.EarlyUnlockPopup;
+        earlyUnlockPopup.ChestView = ChestView;
+        earlyUnlockPopup.GemsRequired = CalculateGemsRequired();
+        earlyUnlockPopup.gameObject.SetActive(true);
     }
+
+    private int CalculateGemsRequired()
+    {
+        decimal d = (TimeToOpen / (decimal)10);
+        int gems = (int)Math.Ceiling(d) * GemsRequiredPer10Min;
+        return gems;
+    }
+
     public override void OnStateExit()
     {
-        cancellationTokenSource.Cancel();
+        cancellationTokenSource?.Cancel();
     }
 }

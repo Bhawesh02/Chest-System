@@ -12,22 +12,39 @@ public class EarlyUnlockPopup : MonoBehaviour
     private Button confirmButton;
     public ChestView ChestView;
 
-    
+    private string initialText ;
+
+    public int GemsRequired;
+
+    private void Awake()
+    {
+        initialText = required.text;
+    }
+
     private void Start()
     {
         cancelButton.onClick.AddListener(Cancel);
         confirmButton.onClick.AddListener(Confirm);
     }
-
+    private void OnEnable()
+    {
+        required.text += "\n" + GemsRequired;
+    }
     private void Confirm()
     {
         ChestView.ChestController.SetChestState(ChestStates.Unlocked);
-        gameObject.SetActive(false);
+        SetOff();
     }
 
     private void Cancel()
     {
-        gameObject.SetActive(false);
+        SetOff();
     }
     
+    private void SetOff()
+    {
+        required.text = initialText;
+        Debug.Log(initialText);
+        gameObject.SetActive(false);
+    }
 }

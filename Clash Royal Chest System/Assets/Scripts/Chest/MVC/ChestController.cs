@@ -26,10 +26,7 @@ public class ChestController
     public void SetChestState(ChestStates state)
     {
         chestModel.State = state;
-        if(chestModel.CurrentState == null)
-        {
-
-        }
+        chestModel.CurrentState?.OnStateExit();
 
         switch (state)
         {
