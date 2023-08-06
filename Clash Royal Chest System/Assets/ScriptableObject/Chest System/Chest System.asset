@@ -19,3 +19,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8f789d3ed5e66f040b4d45c1e9eff70d, type: 2}
   NumOfChestInScene: 4
   NumOfChestInUnlockQueue: 2
+  GemsRequiredPer10Min: 1
