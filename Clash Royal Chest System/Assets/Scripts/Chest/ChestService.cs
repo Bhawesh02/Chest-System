@@ -3,6 +3,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class ChestService : MonoSingletonGeneric<ChestService>
 {
@@ -14,10 +15,11 @@ public class ChestService : MonoSingletonGeneric<ChestService>
 
     public List<ChestView> UnlockQueue = new();
 
+    public List<ChestView> ChestInScene = new();
 
     private void Start()
     {
-        SpawnChestCards();
+        InitialSpawnChestCards();
         EventService.Instance.ChestUnlocked += DequeChest;
     }
 
@@ -30,11 +32,11 @@ public class ChestService : MonoSingletonGeneric<ChestService>
         }
     }
 
-    private void SpawnChestCards()
+    private void InitialSpawnChestCards()
     {
         for (int i = 0; i < ChestSystem.NumOfChestInScene; i++)
         {
-            Instantiate(chestCardPrefab.gameObject, chestGrid.gameObject.transform);
+            ChestInScene.Add(Instantiate<ChestView>(chestCardPrefab,chestGrid.gameObject.transform));
         }
     }
 
@@ -55,5 +57,15 @@ public class ChestService : MonoSingletonGeneric<ChestService>
         {
             chestView.ChestController.SetChestState(ChestStates.Unlocking);
         }
+    }
+
+    public void SpawnChest()
+    {
+        if (ChestInScene.Count == ChestSystem.NumOfChestInScene)
+        {
+            UiService.Instance.EnableErrorPopup("No more Chest can be spawned");
+            return;
+        }
+        Instantiate(chestCardPrefab, chestGrid.gameObject.transform);
     }
 }

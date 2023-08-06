@@ -32,4 +32,8 @@ public class ChestView : MonoBehaviour
         ChestModel = new(chestService.ChestSystem.chestScriptableObjects[sObjInt],this);
         ChestController = new(ChestModel,this);
     }
+    private void OnDestroy()
+    {
+        ChestService.Instance.ChestInScene.Remove(this);
+    }
 }

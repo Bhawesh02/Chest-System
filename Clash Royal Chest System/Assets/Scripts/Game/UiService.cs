@@ -1,15 +1,20 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using System;
 
 public class UiService : MonoSingletonGeneric<UiService>
 {
+    [SerializeField]
+    private Button spawnChestButton;
+    
+    
+    [Header("Currency UI")]
     [SerializeField]
     private TextMeshProUGUI gemsUi;
     [SerializeField]
     private TextMeshProUGUI coinsUi;
 
+    [Header("Early Unlock Popup")]
     [SerializeField]
     private GameObject earlyUnlockPopup;
     [SerializeField]
@@ -18,10 +23,16 @@ public class UiService : MonoSingletonGeneric<UiService>
     private Button earlyUnlockPopupCancelButton;
     [SerializeField]
     private Button earlyUnlockPopupConfirmButton;
+    
+    [Header("Error Popup")]
     [SerializeField]
-    private GameObject notEnoughtGemPopup;
+    private GameObject errorPopup;
     [SerializeField]
-    private Button notEnoughGemPopupOk;
+    private TextMeshProUGUI errorPopupHeading;
+    [SerializeField]
+    private Button errorPopupOk;
+
+    [Header("Reward Got Popup")]
     [SerializeField]
     private GameObject rewardGotPopup;
     [SerializeField]
@@ -33,7 +44,9 @@ public class UiService : MonoSingletonGeneric<UiService>
 
 
     private string initialText;
+    [HideInInspector]
     public ChestView ChestView;
+    [HideInInspector]
     public int GemsRequired;
 
   
@@ -42,9 +55,10 @@ public class UiService : MonoSingletonGeneric<UiService>
     {
         initialText = earlyUnlockPopupRequired.text;
         earlyUnlockPopupCancelButton.onClick.AddListener(DisableEarlyPopup);
-        earlyUnlockPopupConfirmButton.onClick.AddListener(Confirm);
-        notEnoughGemPopupOk.onClick.AddListener(OkNotEnoughGem);
+        earlyUnlockPopupConfirmButton.onClick.AddListener(EarlyPopUpConfirm);
+        errorPopupOk.onClick.AddListener(ErrorPopupOkClick);
         rewardGotPopupOk.onClick.AddListener(OkRewardClaimed);
+        spawnChestButton.onClick.AddListener(ChestService.Instance.SpawnChest);
         EventService.Instance.ChestClaimed += EnableRewardsGotPopup;
     }
     public void UpdateUiText()
@@ -52,23 +66,17 @@ public class UiService : MonoSingletonGeneric<UiService>
         gemsUi.text = CurrencyService.Instance.GemsAvailable.ToString(); ;
         coinsUi.text = CurrencyService.Instance.CoinsAvailable.ToString();
     }
-    private void EnableRewardsGotPopup(int coinsAmt, int gemsAmt)
+    #region EarlyPopup
+    public void EnableEarlyPopup()
     {
-        rewardGotPopup.SetActive(true);
-        gemsRewardGot.text = gemsAmt.ToString();
-        coinRewardGot.text = coinsAmt.ToString();
+        earlyUnlockPopup.SetActive(true);
+        earlyUnlockPopupRequired.text += "\n" + GemsRequired;
     }
-
-    private void OkRewardClaimed()
-    {
-        rewardGotPopup.SetActive(false);
-    }
-
-    private void Confirm()
+    private void EarlyPopUpConfirm()
     {
         if (CurrencyService.Instance.GemsAvailable < GemsRequired)
         {
-            notEnoughtGemPopup.SetActive(true);
+            EnableErrorPopup("Not Enough Gem");
         }
         else
         {
@@ -78,20 +86,37 @@ public class UiService : MonoSingletonGeneric<UiService>
         DisableEarlyPopup();
     }
 
-    
+
     private void DisableEarlyPopup()
     {
         earlyUnlockPopupRequired.text = initialText;
         earlyUnlockPopup.SetActive(false);
     }
-    private void OkNotEnoughGem()
-    {
-        notEnoughtGemPopup.SetActive(false);
-    }
+    #endregion
 
-    public void EnableEarlyPopup()
+    #region RewardGot
+    private void EnableRewardsGotPopup(int coinsAmt, int gemsAmt)
     {
-        earlyUnlockPopup.SetActive(true);
-        earlyUnlockPopupRequired.text += "\n" + GemsRequired;
+        rewardGotPopup.SetActive(true);
+        gemsRewardGot.text = gemsAmt.ToString();
+        coinRewardGot.text = coinsAmt.ToString();
     }
+    private void OkRewardClaimed()
+    {
+        rewardGotPopup.SetActive(false);
+    }
+    #endregion
+
+    #region ErrorPopup
+    public void EnableErrorPopup(string message)
+    {
+        errorPopup.SetActive(true);
+        errorPopupHeading.text = message;
+    }
+    private void ErrorPopupOkClick()
+    {
+        errorPopup.SetActive(false);
+    }
+    #endregion
+
 }
