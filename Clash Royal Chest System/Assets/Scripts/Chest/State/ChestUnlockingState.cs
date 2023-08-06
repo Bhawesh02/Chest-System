@@ -48,7 +48,7 @@ public class ChestUnlockingState : ChestState
     {
         try
         {
-            await Task.Delay(5000, cancellationTokenSource.Token);
+            await Task.Delay(60000, cancellationTokenSource.Token);
             TimeToOpen--;
             ShowTime();
             if (TimeToOpen == 0)
