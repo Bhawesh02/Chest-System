@@ -8,16 +8,17 @@ public class CurrencyService : MonoSingletonGeneric<CurrencyService>
     private TextMeshProUGUI gemsUi;
     [SerializeField]
     private TextMeshProUGUI coinsUi;
-    [HideInInspector]
+
+    public int initialAmt;
+
     public int CoinsAvailable { get; private set; }
-    [HideInInspector]
     public int GemsAvailable { get; private set; }
 
         
     private void Start()
     {
-        CoinsAvailable = 6;
-        GemsAvailable = 6;
+        CoinsAvailable = initialAmt;
+        GemsAvailable = initialAmt;
         updateUiText();
         EventService.Instance.ChestClaimed += addCurency;
     }

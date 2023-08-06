@@ -27,7 +27,7 @@ public class ChestUnlockingState : ChestState
         StartTime = Time.time;
         TimeToOpen = ChestView.ChestModel.TimeToOpenInMin;
         ShowTime();
-        AfterEveryMin();
+        UpdateTimer();
     }
 
     private void ShowTime()
@@ -44,7 +44,7 @@ public class ChestUnlockingState : ChestState
 
 
 
-    private async void AfterEveryMin()
+    private async void UpdateTimer()
     {
         try
         {
@@ -56,7 +56,7 @@ public class ChestUnlockingState : ChestState
                 ChestView.ChestController.SetChestState(ChestStates.Unlocked);
                 return;
             }
-            AfterEveryMin();
+            UpdateTimer();
         }
         catch (TaskCanceledException)
         {

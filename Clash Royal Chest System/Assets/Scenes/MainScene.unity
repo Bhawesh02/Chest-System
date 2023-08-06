@@ -1152,6 +1152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gemsUi: {fileID: 818245918}
   coinsUi: {fileID: 258627690}
+  initialAmt: 50
 --- !u!4 &754747185
 Transform:
   m_ObjectHideFlags: 0
