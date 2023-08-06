@@ -7,6 +7,7 @@ using TMPro;
 public class ChestView : MonoBehaviour
 {
     public ChestController ChestController{get; private set;}
+    public Image BgImage;
     public ChestModel ChestModel { get; private set;}
     private static ChestService chestService ;
     private Button button;
@@ -16,6 +17,7 @@ public class ChestView : MonoBehaviour
     private void Awake()
     {
         button = GetComponent<Button>();
+        BgImage = GetComponent<Image>();
     }
     private void Start()
     {
@@ -25,7 +27,10 @@ public class ChestView : MonoBehaviour
         button.onClick.AddListener(ChestController.CardClicked);
     }
     
-
+    public void SetBgColor(Color color)
+    {
+        BgImage.color = color;
+    }
     private void SetModelAndController()
     {
         int sObjInt = Random.Range(0,chestService.ChestSystem.chestScriptableObjects.Length);

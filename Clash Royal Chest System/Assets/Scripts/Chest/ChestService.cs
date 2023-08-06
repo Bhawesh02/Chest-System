@@ -1,5 +1,6 @@
 
 
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -26,7 +27,7 @@ public class ChestService : MonoSingletonGeneric<ChestService>
     private void DequeChest()
     {
         UnlockQueue.RemoveAt(0);
-        if(UnlockQueue.Count > 0 )
+        if (UnlockQueue.Count > 0)
         {
             UnlockQueue[0].ChestController.SetChestState(ChestStates.Unlocking);
         }
@@ -36,7 +37,7 @@ public class ChestService : MonoSingletonGeneric<ChestService>
     {
         for (int i = 0; i < ChestSystem.NumOfChestInScene; i++)
         {
-            ChestInScene.Add(Instantiate<ChestView>(chestCardPrefab,chestGrid.gameObject.transform));
+            ChestInScene.Add(Instantiate<ChestView>(chestCardPrefab, chestGrid.gameObject.transform));
         }
     }
 
@@ -44,14 +45,15 @@ public class ChestService : MonoSingletonGeneric<ChestService>
     {
         if (UnlockQueue.Find(x => x.Equals(chestView)) != null)
         {
-            Debug.Log("Already In queue");
+            UiService.Instance.EnableErrorPopup("Already In queue");
             return;
         }
         if (UnlockQueue.Count == ChestSystem.NumOfChestInUnlockQueue)
         {
-            Debug.Log("Wait for chests to open");
+            UiService.Instance.EnableErrorPopup("Wait for chests to open");
             return;
         }
+        chestView.SetBgColor(Color.green);
         UnlockQueue.Add(chestView);
         if (UnlockQueue.Count == 1)
         {
@@ -66,6 +68,6 @@ public class ChestService : MonoSingletonGeneric<ChestService>
             UiService.Instance.EnableErrorPopup("No more Chest can be spawned");
             return;
         }
-        Instantiate(chestCardPrefab, chestGrid.gameObject.transform);
+        ChestInScene.Add(Instantiate<ChestView>(chestCardPrefab, chestGrid.gameObject.transform));
     }
 }
