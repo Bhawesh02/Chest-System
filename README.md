@@ -39,7 +39,7 @@ The Observer Pattern is utilized to handle updates when a chest is claimed:
 **Next Chest Unlock**: The pattern also triggers the unlocking process for the next chest in the queue, ensuring a continuous flow of available chests.
 
 
-**Demo:**
+## **Demo:**
 
-https://github.com/Bhawesh02/Chest-System/assets/93391124/b8a39c35-901c-4b83-b8dc-8dc67314973e
+https://github.com/Bhawesh02/Chest-System/assets/93391124/4807ed8a-264f-4351-ad63-76d4ab33789e
 
