@@ -10,14 +10,14 @@ public class ChestUnlockingState : ChestState
 
     private int TimeToOpen;
 
-    private CancellationTokenSource cancellationTokenSource;
+    private readonly CancellationTokenSource cancellationTokenSource;
 
-    private int GemsRequiredPer10Min;
+    private readonly int gemsRequiredPer10Min;
     public ChestUnlockingState(ChestView chestView)
     {
         ChestView = chestView;
         cancellationTokenSource = new CancellationTokenSource();
-        GemsRequiredPer10Min = ChestService.Instance.ChestSystem.GemsRequiredPer10Min;
+        gemsRequiredPer10Min = ChestService.Instance.ChestSystem.GemsRequiredPer10Min;
     }
 
 
@@ -75,7 +75,7 @@ public class ChestUnlockingState : ChestState
     private int CalculateGemsRequired()
     {
         decimal d = (TimeToOpen / (decimal)10);
-        int gems = (int)Math.Ceiling(d) * GemsRequiredPer10Min;
+        int gems = (int)Math.Ceiling(d) * gemsRequiredPer10Min;
         return gems;
     }
 

@@ -20,4 +20,4 @@ MonoBehaviour:
   Type: 4
   TimeToOpenInMin: 180
   ChestClose: {fileID: 21300000, guid: 60def6febfc4e264d86b916fd1ed1733, type: 3}
-  ChestOpen: {fileID: 0}
+  ChestOpen: {fileID: 21300000, guid: 51e49a63253e1b9439ad79cf150a3314, type: 3}
