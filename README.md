@@ -4,7 +4,7 @@
 
 Welcome to the GitHub repository for my take on Clash Royal inspired Chest System! This system has been designed with modularity and efficiency in mind, using Model-View-Controller (MVC) architecture, State Machine, and Observer Pattern.
 
-**Features**
+## **Features**
 
 **MVC Architecture**: The Chest System is divided into three key components - Model, View, and Controller - to ensure a clear separation of concerns and enhance maintainability.
 
@@ -12,7 +12,7 @@ Welcome to the GitHub repository for my take on Clash Royal inspired Chest Syste
 
 **Observer Pattern**: We have implemented the Observer Pattern to handle updates when a chest is claimed. This pattern notifies the UI to update the current available chests and triggers the unlocking of the next chest in the queue.
 
-**Components**
+## **Components**
 
 **Model**: Contains the core logic of the chest system. It manages the state transitions, rewards, timers, and maintains the unlock queue.
 
@@ -20,7 +20,7 @@ Welcome to the GitHub repository for my take on Clash Royal inspired Chest Syste
 
 **Controller**: Acts as the bridge between the model and view. It handles player interactions, initiates unlocking, and communicates state changes to both the model and view.
 
-**State Transitions**
+## **State Transitions**
 
 The State Machine manages state transitions as follows:
 
@@ -30,10 +30,16 @@ The State Machine manages state transitions as follows:
 
 **Unlocked**: After the timer reaches zero, the chest transitions to the Unlocked state, and the reward becomes available for the player to claim.
 
-**Observer Pattern Implementation**
+## **Observer Pattern Implementation**
 
 The Observer Pattern is utilized to handle updates when a chest is claimed:
 
 **Currency Update**: When a chest is claimed, the Observer Pattern notifies the UI to update the currency available.
 
 **Next Chest Unlock**: The pattern also triggers the unlocking process for the next chest in the queue, ensuring a continuous flow of available chests.
+
+
+**Demo:**
+
+https://github.com/Bhawesh02/Chest-System/assets/93391124/b8a39c35-901c-4b83-b8dc-8dc67314973e
+
