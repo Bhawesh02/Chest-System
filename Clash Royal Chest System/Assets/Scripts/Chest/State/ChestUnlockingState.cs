@@ -27,7 +27,7 @@ public class ChestUnlockingState : ChestState
         StartTime = Time.time;
         TimeToOpen = ChestView.ChestModel.TimeToOpenInMin;
         ShowTime();
-        AfterEveryMin();
+        UpdateTimer();
     }
 
     private void ShowTime()
@@ -44,7 +44,7 @@ public class ChestUnlockingState : ChestState
 
 
 
-    private async void AfterEveryMin()
+    private async void UpdateTimer()
     {
         try
         {
@@ -56,7 +56,7 @@ public class ChestUnlockingState : ChestState
                 ChestView.ChestController.SetChestState(ChestStates.Unlocked);
                 return;
             }
-            AfterEveryMin();
+            UpdateTimer();
         }
         catch (TaskCanceledException)
         {
@@ -66,10 +66,10 @@ public class ChestUnlockingState : ChestState
 
     public override void Clicked()
     {
-        EarlyUnlockPopup earlyUnlockPopup = ChestService.Instance.EarlyUnlockPopup;
-        earlyUnlockPopup.ChestView = ChestView;
-        earlyUnlockPopup.GemsRequired = CalculateGemsRequired();
-        earlyUnlockPopup.gameObject.SetActive(true);
+        UiService uiService = UiService.Instance;
+        uiService.ChestView = ChestView;
+        uiService.GemsRequired = CalculateGemsRequired();
+        uiService.EnableEarlyPopup();
     }
 
     private int CalculateGemsRequired()
