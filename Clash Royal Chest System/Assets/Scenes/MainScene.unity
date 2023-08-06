@@ -1038,14 +1038,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21ebc0b867099ca4a9dea4f1a9243584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnChestButton: {fileID: 2087749840}
   gemsUi: {fileID: 818245918}
   coinsUi: {fileID: 258627690}
   earlyUnlockPopup: {fileID: 1435162677}
   earlyUnlockPopupRequired: {fileID: 802001644}
   earlyUnlockPopupCancelButton: {fileID: 539710166}
   earlyUnlockPopupConfirmButton: {fileID: 568357486}
-  notEnoughtGemPopup: {fileID: 1071696597}
-  notEnoughGemPopupOk: {fileID: 648214487}
+  errorPopup: {fileID: 1071696597}
+  errorPopupHeading: {fileID: 1725712325}
+  errorPopupOk: {fileID: 648214487}
   rewardGotPopup: {fileID: 1104675017}
   rewardGotPopupOk: {fileID: 735000105}
   gemsRewardGot: {fileID: 361295465}
@@ -2223,7 +2225,7 @@ GameObject:
   - component: {fileID: 1071696600}
   - component: {fileID: 1071696599}
   m_Layer: 5
-  m_Name: Not Enough Gem
+  m_Name: Error Popup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2961,6 +2963,7 @@ MonoBehaviour:
   ChestSystem: {fileID: 11400000, guid: fbcf67e1086233c4b97fcf8be92071c2, type: 2}
   chestCardPrefab: {fileID: 8554351779444104734, guid: 6b97c8ee553664946ae2e06b94ce9482, type: 3}
   UnlockQueue: []
+  ChestInScene: []
 --- !u!4 &1539124083
 Transform:
   m_ObjectHideFlags: 0

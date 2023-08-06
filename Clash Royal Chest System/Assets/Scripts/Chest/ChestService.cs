@@ -62,7 +62,10 @@ public class ChestService : MonoSingletonGeneric<ChestService>
     public void SpawnChest()
     {
         if (ChestInScene.Count == ChestSystem.NumOfChestInScene)
+        {
+            UiService.Instance.EnableErrorPopup("No more Chest can be spawned");
             return;
+        }
         Instantiate(chestCardPrefab, chestGrid.gameObject.transform);
     }
 }
