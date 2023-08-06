@@ -2,15 +2,15 @@
 
 **Overview**
 
-Welcome to the GitHub repository for our game's advanced Chest System! This system has been designed with modularity and efficiency in mind, using Model-View-Controller (MVC) architecture, State Machine, and Observer Pattern.
+Welcome to the GitHub repository for my take on Clash Royal inspired Chest System! This system has been designed with modularity and efficiency in mind, using Model-View-Controller (MVC) architecture, State Machine, and Observer Pattern.
 
 **Features**
 
-MVC Architecture: The Chest System is divided into three key components - Model, View, and Controller - to ensure a clear separation of concerns and enhance maintainability.
+**MVC Architecture**: The Chest System is divided into three key components - Model, View, and Controller - to ensure a clear separation of concerns and enhance maintainability.
 
-State Machine: Each chest has three states - Locked, Unlocking, and Unlocked. The State Machine pattern allows smooth transitions between these states, providing a seamless player experience.
+**State Machine**: Each chest has three states - Locked, Unlocking, and Unlocked. The State Machine pattern allows smooth transitions between these states, providing a seamless player experience.
 
-Observer Pattern: We have implemented the Observer Pattern to handle updates when a chest is claimed. This pattern notifies the UI to update the current available chests and triggers the unlocking of the next chest in the queue.
+**Observer Pattern**: We have implemented the Observer Pattern to handle updates when a chest is claimed. This pattern notifies the UI to update the current available chests and triggers the unlocking of the next chest in the queue.
 
 **Components**
 
