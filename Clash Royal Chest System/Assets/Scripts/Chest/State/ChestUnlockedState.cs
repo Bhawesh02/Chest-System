@@ -26,7 +26,9 @@ public class ChestUnlockedState : ChestState
     }
     public override void Clicked()
     {
-        
-        EventService.Instance.InvokeChestClamed(random.Next(minCoins,maxCoins), random.Next(minGems,maxGems));
+        int gemsEarned = random.Next(minGems, maxGems);
+        int coinsEarned = random.Next(minCoins, maxCoins);
+        EventService.Instance.InvokeChestClamed(coinsEarned, gemsEarned);
+        ChestView.Destroy(ChestView.gameObject);
     }
 }

@@ -66,10 +66,10 @@ public class ChestUnlockingState : ChestState
 
     public override void Clicked()
     {
-        EarlyUnlockPopup earlyUnlockPopup = ChestService.Instance.EarlyUnlockPopup;
-        earlyUnlockPopup.ChestView = ChestView;
-        earlyUnlockPopup.GemsRequired = CalculateGemsRequired();
-        earlyUnlockPopup.gameObject.SetActive(true);
+        UiService uiService = UiService.Instance;
+        uiService.ChestView = ChestView;
+        uiService.GemsRequired = CalculateGemsRequired();
+        uiService.EnableEarlyPopup();
     }
 
     private int CalculateGemsRequired()

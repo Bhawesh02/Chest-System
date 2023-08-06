@@ -14,7 +14,6 @@ public class ChestService : MonoSingletonGeneric<ChestService>
 
     public List<ChestView> UnlockQueue = new();
 
-    public EarlyUnlockPopup EarlyUnlockPopup;
 
     private void Start()
     {

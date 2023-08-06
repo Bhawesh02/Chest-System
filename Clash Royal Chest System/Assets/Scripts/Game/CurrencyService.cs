@@ -4,55 +4,50 @@ using UnityEngine;
 
 public class CurrencyService : MonoSingletonGeneric<CurrencyService> 
 {
-    [SerializeField]
-    private TextMeshProUGUI gemsUi;
-    [SerializeField]
-    private TextMeshProUGUI coinsUi;
+    
 
     public int initialAmt;
 
     public int CoinsAvailable { get; private set; }
     public int GemsAvailable { get; private set; }
 
+    private UiService uiService;
         
     private void Start()
     {
         CoinsAvailable = initialAmt;
         GemsAvailable = initialAmt;
-        updateUiText();
-        EventService.Instance.ChestClaimed += addCurency;
+        uiService = UiService.Instance;
+        uiService.UpdateUiText();
+        EventService.Instance.ChestClaimed += AddCurency;
     }
 
-    private void updateUiText()
-    {
-        gemsUi.text = GemsAvailable.ToString(); ;
-        coinsUi.text = CoinsAvailable.ToString();
-    }
+    
 
     public void UseGem(int gemAmt)
     {
         if (gemAmt > GemsAvailable)
             return;
         GemsAvailable-=gemAmt;
-        updateUiText() ;
+        uiService.UpdateUiText() ;
     }
 
     public void DeductGems(int AmtToDeduct)
     {
-        GemsAvailable -= AmtToDeduct; 
-        updateUiText() ;
+        GemsAvailable -= AmtToDeduct;
+        uiService.UpdateUiText() ;
     }
     public void DeductCoins(int AmtToDeduct)
     {
         CoinsAvailable -= AmtToDeduct;
-        updateUiText();
+        uiService.UpdateUiText();
     }
 
-    private void addCurency(int coinsAmt, int gemsAmt)
+    private void AddCurency(int coinsAmt, int gemsAmt)
     {
         CoinsAvailable += coinsAmt;
         GemsAvailable += gemsAmt;
-        updateUiText();
+        uiService.UpdateUiText();
     }
 
 }
