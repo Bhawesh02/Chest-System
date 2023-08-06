@@ -13,13 +13,11 @@ public class CurrencyService : MonoSingletonGeneric<CurrencyService>
     [HideInInspector]
     public int GemsAvailable { get; private set; }
 
-    private void Awake()
-    {
-        CoinsAvailable = 1000;
-        GemsAvailable = 1000;
-    }
+        
     private void Start()
     {
+        CoinsAvailable = 6;
+        GemsAvailable = 6;
         updateUiText();
         EventService.Instance.ChestClaimed += addCurency;
     }
@@ -28,6 +26,14 @@ public class CurrencyService : MonoSingletonGeneric<CurrencyService>
     {
         gemsUi.text = GemsAvailable.ToString(); ;
         coinsUi.text = CoinsAvailable.ToString();
+    }
+
+    public void UseGem(int gemAmt)
+    {
+        if (gemAmt > GemsAvailable)
+            return;
+        GemsAvailable-=gemAmt;
+        updateUiText() ;
     }
 
     public void DeductGems(int AmtToDeduct)

@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
 public class EarlyUnlockPopup : MonoBehaviour
 {
@@ -10,10 +11,12 @@ public class EarlyUnlockPopup : MonoBehaviour
     private Button cancelButton;
     [SerializeField]
     private Button confirmButton;
+    [SerializeField]
+    private GameObject notEnoughtGemPopup;
+    [SerializeField]
+    private Button notEnoughGemPopupOk;
+    private string initialText;
     public ChestView ChestView;
-
-    private string initialText ;
-
     public int GemsRequired;
 
     private void Awake()
@@ -25,14 +28,26 @@ public class EarlyUnlockPopup : MonoBehaviour
     {
         cancelButton.onClick.AddListener(Cancel);
         confirmButton.onClick.AddListener(Confirm);
+        notEnoughGemPopupOk.onClick.AddListener(OkNotEnoughGem);
     }
+
+    
+
     private void OnEnable()
     {
         required.text += "\n" + GemsRequired;
     }
     private void Confirm()
     {
-        ChestView.ChestController.SetChestState(ChestStates.Unlocked);
+        if (CurrencyService.Instance.GemsAvailable < GemsRequired)
+        {
+            CurrencyService.Instance.UseGem(GemsRequired);
+            notEnoughtGemPopup.SetActive(true);
+        }
+        else
+        {
+            ChestView.ChestController.SetChestState(ChestStates.Unlocked);
+        }
         SetOff();
     }
 
@@ -44,7 +59,10 @@ public class EarlyUnlockPopup : MonoBehaviour
     private void SetOff()
     {
         required.text = initialText;
-        Debug.Log(initialText);
         gameObject.SetActive(false);
+    }
+    private void OkNotEnoughGem()
+    {
+        notEnoughtGemPopup.SetActive(false);
     }
 }
