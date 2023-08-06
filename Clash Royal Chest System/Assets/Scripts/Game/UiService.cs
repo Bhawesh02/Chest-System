@@ -6,6 +6,9 @@ using System;
 public class UiService : MonoSingletonGeneric<UiService>
 {
     [SerializeField]
+    private Button spawnChestButton;
+
+    [SerializeField]
     private TextMeshProUGUI gemsUi;
     [SerializeField]
     private TextMeshProUGUI coinsUi;
@@ -45,6 +48,7 @@ public class UiService : MonoSingletonGeneric<UiService>
         earlyUnlockPopupConfirmButton.onClick.AddListener(Confirm);
         notEnoughGemPopupOk.onClick.AddListener(OkNotEnoughGem);
         rewardGotPopupOk.onClick.AddListener(OkRewardClaimed);
+        spawnChestButton.onClick.AddListener(ChestService.Instance.SpawnChest);
         EventService.Instance.ChestClaimed += EnableRewardsGotPopup;
     }
     public void UpdateUiText()
